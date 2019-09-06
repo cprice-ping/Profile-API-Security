@@ -210,7 +210,7 @@
             {
                 "id": 1,
                 "name": "ADMIN",
-                "keyPairId": 5,
+                "keyPairId": 2,
                 "useServerCipherSuiteOrder": true
             },
             {
@@ -222,13 +222,13 @@
             {
                 "id": 3,
                 "name": "AGENT",
-                "keyPairId": 5,
+                "keyPairId": 2,
                 "useServerCipherSuiteOrder": true
             },
             {
                 "id": 4,
                 "name": "ENGINE",
-                "keyPairId": 5,
+                "keyPairId": 2,
                 "useServerCipherSuiteOrder": true
             }
         ],
