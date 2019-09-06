@@ -1,0 +1,65 @@
+version: "2.1"
+
+services:
+  pi-ase:
+    image: pricecs/pi-ase:4.0
+    environment: 
+      - ASE_MODE=sideband
+      - ASE_ENABLE_ABS=true
+      - ASE_ABS_ENDPOINT=int-pi.cpricedomain.ping-eng.com:8080
+      - ASE_ABS_ACCESS_KEY=abs_ak
+      - ASE_ABS_SECRET_KEY=abs_sk
+    shm_size: 300m
+    ports:
+      - 8443:8443
+      - 8010:8010
+    networks:
+      - pingnet
+
+  pingaccess:
+    image: pingidentity/pingaccess:5.3.0-edge
+    env_file:
+      - ~/.pingidentity/devops
+    environment: 
+      - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-API-Security.git
+      - SERVER_PROFILE_PATH=pingaccess
+      - VERBOSE=true
+    ports:
+      - 443:443
+      - 9000:9000
+    networks:
+      - pingnet-dmz
+      - pingnet
+
+#  pingdirectory:
+#    image: pingidentity/pingdirectory
+#    environment:
+#      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+#      - SERVER_PROFILE_PATH=baseline/pingdirectory
+#    ports:
+#      - 1636:636
+#      - 1443:443
+#    networks:
+#      - pingnet
+                    
+#  pingdatasync:
+#    image: pingidentity/pingdatasync:edge
+#    environment:
+#      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
+#      - SERVER_PROFILE_PATH=simple-sync/pingdatasync
+#    ports:
+#      - 2636:636
+#      - 2443:443
+#    networks:
+#      - pingnet
+
+  pingdataconsole:
+    image: pingidentity/pingdataconsole
+    ports:
+      - 8080:8080
+    networks:
+      - pingnet
+
+networks:
+    pingnet:
+    pingnet-dmz:
