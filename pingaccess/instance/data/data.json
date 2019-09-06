@@ -485,7 +485,7 @@
             {
                 "id": "d48ed990-168a-4c6c-a9b3-4956931bf887",
                 "targets": [
-                    "localhost:8443"
+                    "pi-ase:8443"
                 ],
                 "name": "PI ASE",
                 "secure": true,
