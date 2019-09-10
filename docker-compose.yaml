@@ -24,39 +24,10 @@ services:
       - SERVER_PROFILE_PATH=pingaccess
       - VERBOSE=true
     ports:
-      - 3443:443
+      - 443:443
       - 9000:9000
     networks:
       - pingnet-dmz
-      - pingnet
-
-#  pingdirectory:
-#    image: pingidentity/pingdirectory
-#    environment:
-#      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-#      - SERVER_PROFILE_PATH=baseline/pingdirectory
-#    ports:
-#      - 1636:636
-#      - 1443:443
-#    networks:
-#      - pingnet
-                    
-#  pingdatasync:
-#    image: pingidentity/pingdatasync:edge
-#    environment:
-#      - SERVER_PROFILE_URL=https://github.com/pingidentity/pingidentity-server-profiles.git
-#      - SERVER_PROFILE_PATH=simple-sync/pingdatasync
-#    ports:
-#      - 2636:636
-#      - 2443:443
-#    networks:
-#      - pingnet
-
-  pingdataconsole:
-    image: pingidentity/pingdataconsole
-    ports:
-      - 8080:8080
-    networks:
       - pingnet
 
 networks:
