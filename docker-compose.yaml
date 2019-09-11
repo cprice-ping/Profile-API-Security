@@ -9,9 +9,25 @@ services:
       - ASE_ABS_ENDPOINT=int-pi.cpricedomain.ping-eng.com:8080
       - ASE_ABS_ACCESS_KEY=abs_ak
       - ASE_ABS_SECRET_KEY=abs_sk
-    shm_size: 300m
+    shm_size: 1g
     ports:
       - 8010:8010
+    networks:
+      - pingnet
+
+  pi-aad:
+    image: pricecs/aad_amt:4.0
+    environment: 
+      - AAD_MODE=pingaccess
+      - ABS_HOST=int-pi.cpricedomain.ping-eng.com:8080
+      - ABS_ACCESS_KEY=abs_ak
+      - ABS_SECRET_KEY=abs_sk
+      - ASE_HOST=pi-ase
+      - ASE_ACCESS_KEY=admin
+      - ASE_SECRET_KEY=admin
+      - PINGACCESS_MANAGEMENT_URL=https://pingaccess:9000
+      - PINGACCESS_MANAGEMENT_USERNAME=administrator
+      - PINGACCESS_MANAGEMENT_PASSWORD=2FederateM0re
     networks:
       - pingnet
 
@@ -22,7 +38,7 @@ services:
     environment: 
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-API-Security.git
       - SERVER_PROFILE_PATH=pingaccess
-      - VERBOSE=true
+      - VERBOSE=false
     ports:
       - 443:443
       - 9000:9000
