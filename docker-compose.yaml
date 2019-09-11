@@ -41,9 +41,9 @@ services:
       - VERBOSE=false
       # Token Provider settings
       # PA_ATC_JWKS is used when PA is doing a JWT Access Token Validator
-      - PA_TOKEN_ISSUER=https://auth.pingone.com/2087f9ab-c416-45c4-92f1-22bbc894407c/as
+      - PA_TOKEN_ISSUER={{Your P14C Token Issuer}}
       - PA_TOKEN_AUD=https://api.pingone.com
-      - PA_ATV_JWKS=/2087f9ab-c416-45c4-92f1-22bbc894407c/as/jwks
+      - PA_ATV_JWKS=/{{Your P14C EnvironmentID}}/as/jwks
     ports:
       - 443:443
       - 9000:9000
