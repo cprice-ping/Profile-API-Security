@@ -6,7 +6,7 @@ services:
     environment: 
       - ASE_MODE=sideband
       - ASE_ENABLE_ABS=true
-      - ASE_ABS_ENDPOINT=int-pi.cpricedomain.ping-eng.com:8080
+      - ASE_ABS_ENDPOINT={{Your PI ABS location}}:8080
       - ASE_ABS_ACCESS_KEY=abs_ak
       - ASE_ABS_SECRET_KEY=abs_sk
     shm_size: 1g
@@ -19,7 +19,7 @@ services:
     image: pricecs/aad_amt:4.0
     environment: 
       - AAD_MODE=pingaccess
-      - ABS_HOST=int-pi.cpricedomain.ping-eng.com:8080
+      - ABS_HOST={{Your PI ABS location}}:8080
       - ABS_ACCESS_KEY=abs_ak
       - ABS_SECRET_KEY=abs_sk
       - ASE_HOST=pi-ase
