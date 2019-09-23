@@ -39,6 +39,7 @@ services:
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-API-Security.git
       - SERVER_PROFILE_PATH=pingaccess
       - VERBOSE=false
+      - PA_LOG_LEVEL=DEBUG
       # Token Provider settings
       # PA_ATC_JWKS is used when PA is doing a JWT Access Token Validator
       - PA_TOKEN_ISSUER={{Your P14C Token Issuer}}
