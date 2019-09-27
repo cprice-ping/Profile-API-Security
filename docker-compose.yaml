@@ -17,7 +17,7 @@ services:
 
   pi-aad:
     image: pricecs/aad_amt:4.0
-    command: wait-for pingaccess:9000 -t 300
+    command: wait-for pingaccess:9000 -t 300 -- entrypoint.sh
     environment: 
       - AAD_MODE=pingaccess
       - ABS_HOST={{Your PI ABS location}}:8080
