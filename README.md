@@ -4,7 +4,7 @@ This Profile is used to demonstrate PingIntelligence [and PingDataGovernance] us
 It can be used to show the front-end aspects of Ping's API Security solutions with the Ping products to the side of the API integration layer(s).
 
 Pre-requirements:
-* PingIntelligence ABS \ Data Lake (Cloud PoC \ Docker PoC \ manual build)
+* PingIntelligence ABS \ Data Lake (Cloud PoC \ Docker PoC \ manual build -- https://github.com/cprice-ping/Profile-API-Security-Backend)
 * P14C Environment \ Users \ Connection (Used as the Token Provider for PA)
 
 Profile Configuration:
@@ -14,7 +14,7 @@ This profile contains the following services:
 * PI - AAD -- Used to create the PI API Definitions automatically
 * PI - ASE -- API Security Enforcer that PA is communicating with
 
-Environment Variables in the `docker-compose.yaml` can be used to configure this stack to your instances of PI ABS and P14C.
+Environment Variables in `./env_vars` can be used to configure this stack to your instances of PI ABS and P14C.
 
 ## Adding and Protecting an API with PI
 With this setup, the configuration of the APIs for PI is handled in the Application definition in PA.
