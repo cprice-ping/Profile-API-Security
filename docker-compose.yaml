@@ -2,13 +2,9 @@ version: "2"
 
 services:
   pi-ase:
-    image: pricecs/pi-ase:4.0
-    environment: 
-      - ASE_MODE=sideband
-      - ASE_ENABLE_ABS=true
-      - ASE_ABS_ENDPOINT={{Your PI ABS location}}:8080
-      - ASE_ABS_ACCESS_KEY=abs_ak
-      - ASE_ABS_SECRET_KEY=abs_sk
+    image: pricecs/ase:${PI_VERSION}
+    env_file:
+      - ./env_vars
     shm_size: 1g
     ports:
       - 8010:8010
@@ -16,19 +12,10 @@ services:
       - pingnet
 
   pi-aad:
-    image: pricecs/aad_amt:4.0
+    image: pricecs/aad_amt:${PI_VERSION}
     command: wait-for pingaccess:9000 -t 300 -- entrypoint.sh
-    environment: 
-      - AAD_MODE=pingaccess
-      - ABS_HOST={{Your PI ABS location}}:8080
-      - ABS_ACCESS_KEY=abs_ak
-      - ABS_SECRET_KEY=abs_sk
-      - ASE_HOST=pi-ase
-      - ASE_ACCESS_KEY=admin
-      - ASE_SECRET_KEY=admin
-      - PINGACCESS_MANAGEMENT_URL=https://pingaccess:9000
-      - PINGACCESS_MANAGEMENT_USERNAME=administrator
-      - PINGACCESS_MANAGEMENT_PASSWORD=2FederateM0re
+    env_file:
+      - ./env_vars
     networks:
       - pingnet
 
@@ -36,16 +23,12 @@ services:
     image: pingidentity/pingaccess:5.3.0-edge
     env_file:
       - ~/.pingidentity/devops
+      - ./env_vars
     environment: 
       - SERVER_PROFILE_URL=https://github.com/cprice-ping/Profile-API-Security.git
       - SERVER_PROFILE_PATH=pingaccess
       - VERBOSE=false
       - PA_LOG_LEVEL=INFO
-      # Token Provider settings
-      # PA_ATC_JWKS is used when PA is doing a JWT Access Token Validator
-      - PA_TOKEN_ISSUER={{Your P14C Token Issuer}}
-      - PA_TOKEN_AUD=https://api.pingone.com
-      - PA_ATV_JWKS=/{{Your P14C EnvironmentID}}/as/jwks
     ports:
       - 443:443
       - 9000:9000

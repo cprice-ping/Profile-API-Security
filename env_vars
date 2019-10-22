@@ -1,0 +1,25 @@
+PI_VERSION=4.0.2
+
+# ASE variables
+ASE_MODE=sideband
+ASE_ENABLE_ABS=true
+ASE_ABS_ENDPOINT={{Externally accessible ABS FQDN}}:8080
+ASE_ABS_ACCESS_KEY=new_abs_ak
+ASE_ABS_SECRET_KEY=new_abs_sk
+
+# AAD variables    
+AAD_MODE=pingaccess
+ABS_HOST={{Externally accessible ABS FQDN}}:8080
+ABS_ACCESS_KEY=-new_abs_ak
+ABS_SECRET_KEY=new_abs_sk
+ASE_HOST=ase
+ASE_ACCESS_KEY=admin
+ASE_SECRET_KEY=admin
+PINGACCESS_MANAGEMENT_URL=https://pingaccess:9000
+PINGACCESS_MANAGEMENT_USERNAME=administrator
+PINGACCESS_MANAGEMENT_PASSWORD=2FederateM0re
+
+# PingAccess variables
+PA_TOKEN_ISSUER={{P14C Client Issuer}}
+PA_TOKEN_AUD=https://api.pingone.com
+PA_ATV_JWKS=/{{P14C Client ID}}/as/jwks
