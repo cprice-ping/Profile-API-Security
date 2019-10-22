@@ -494,9 +494,9 @@
             {
                 "id": "5221c247-3831-4c10-8fbc-e0bfb58aa218",
                 "targets": [
-                    "pi-ase:8443"
+                    "ase:8443"
                 ],
-                "name": "PI ASE",
+                "name": "Sideband ASE",
                 "secure": true,
                 "trustedCertificateGroupId": 2,
                 "maxConnections": -1,
